@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL Shortener</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f7fa;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      margin-top: 60px;
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #555;
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input[type="text"]:focus {
+      border-color: #007BFF;
+      box-shadow: 0 0 5px rgba(0,123,255,0.5);
+    }
+
+    button {
+      padding: 12px;
+      background: #007BFF;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    .result {
+      margin-top: 25px;
+      padding: 15px;
+      background: #eaf7ea;
+      border: 1px solid #cce5cc;
+      border-radius: 8px;
+      font-size: 15px;
+      color: #2d662d;
+    }
+
+    .result a {
+      color: #007BFF;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .result a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>URL Shortener</h1>
+    <form method="POST" action="/url">
+      <label for="redirectURL">Enter your Original URL</label>
+      <input 
+        type="text" 
+        id="url" 
+        name="url" 
+        placeholder="https://example.com"
+        required 
+      />
+      <button type="submit">Generate</button>
+    </form>
+
+    <div>
+        <h1>URL Generated</h1>
+        <% if (id) { %>
+  <div class="result">
+    Shortened URL: 
+    <a href="/url/<%= id %>" target="_blank">
+      http://localhost:8001/url/<%= id %>
+    </a>
+  </div>
+<% } %>
+    </div>
+  </div>
+</body>
+</html>
